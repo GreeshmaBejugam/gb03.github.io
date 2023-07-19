@@ -44,19 +44,19 @@
 -- create table invoice_archived as 
 -- select * from invoices
 
-create table invoice_archived2
-Select i.invoice_id,
-	i.number,
-    c.name as client,
-    i.invoice_total,
-    i.payment_total,
-    i.invoice_date,
-     i.payment_date,
-     i.due_date
-    
-from invoices i
-join clients c on c.client_id = i.client_id
-where payment_date is not null 
+-- create table invoice_archived2
+-- Select i.invoice_id,
+-- 	i.number,
+--     c.name as client,
+--     i.invoice_total,
+--     i.payment_total,
+--     i.invoice_date,
+--      i.payment_date,
+--      i.due_date
+--     
+-- from invoices i
+-- join clients c on c.client_id = i.client_id
+-- where payment_date is not null 
 
 
 
