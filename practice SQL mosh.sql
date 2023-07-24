@@ -59,6 +59,19 @@
 -- where payment_date is not null 
 
 
+-- exercise 5 
+-- Update orders
+-- set comments = 'Gold Customer'
+-- where customer_id IN (select customer_id
+-- from customers
+-- where points > 3000)
+
+-- select points
+-- from customers
+-- where points > 3000
+
+
+
 
 
 
