@@ -54,24 +54,12 @@ def transform(df, csv_path):
 
 
 
-    # def csv_to_dict(csv_path):
-    #     result_dict = {}
-    #     with open(csv_path, 'r') as csvfile:
-    #         reader = csv.reader(csvfile)
-    #         for row in reader:
-    #             # Assuming the first column contains keys and the second column contains values
-    #             key = row[0]
-    #             value = row[1]
-    #             result_dict[key] = value
-    #     return result_dict
-
-    # # Example usage
-    # csv_path = '/home/project/exchange_rate.csv'
-    # data_dict = csv_to_dict(csv_path)
-
-    # print(data_dict)
-
     
+
+def load_to_csv(df, output_path):
+    ''' This function saves the final data frame as a CSV file in
+    the provided path. Function returns nothing.'''
+    df.to_csv(output_path)
 
 
 def log_progress(message):
@@ -92,9 +80,9 @@ df = transform(df,csv_path)
 
 log_progress('Data transformation complete. Initiating loading process')
 
-# load_to_csv(df, csv_path)
+load_to_csv(df, output_path)
 
-# log_progress('Data saved to CSV file')
+log_progress('Data saved to CSV file')
 
 # sql_connection = sqlite3.connect('Banks.db')
 
@@ -114,43 +102,7 @@ log_progress('Data transformation complete. Initiating loading process')
 
 # log_progress('Server Connection closed')
 
-# url = "https://web.archive.org/web/20230908091635/https://en.wikipedia.org/wiki/List_of_largest_banks"
-# table_attribs = ["Name", "MC_USD_Billion"]
-# db_name = 'Banks.db'
-# table_name = 'Largest_banks'
-# csv_path = './Largest_banks_data.csv'
-# def extract(url, table_attribs):
-#     # url = "https://web.archive.org/web/20230908091635/https://en.wikipedia.org/wiki/List_of_largest_banks"
-#     # table_attribs = ["Name", "MC_USD_Billion"]
-#     # db_name = 'Banks.db'
-#     # table_name = 'Largest_banks'
-#     # csv_path = './Largest_banks_data.csv'
-#     page = requests.get(url).text
-#     data = BeautifulSoup(page,'html.parser')
-#     df = pd.DataFrame(columns=table_attribs)
-#     tables = data.find_all('tbody')
-#     rows = tables[0].find_all('tr')
-#     for row in rows:
-#         col = row.find_all('td')
-#         if len(col)!=0:
-#             data_dict = {"Name": col[0].a.contents[0],
-#                          "MC_USD_Billion": col[1].contents[0]}
-#             df1 = pd.DataFrame(data_dict, index=[0])
-#             df = pd.concat([df,df1], ignore_index=True)
 
-
-            
-                
-#     ''' This function aims to extract the required
-#     information from the website and save it to a data frame. The
-#     function returns the data frame for further processing. '''
-
-    #  return df
-
-
-def load_to_csv(df, output_path):
-    ''' This function saves the final data frame as a CSV file in
-    the provided path. Function returns nothing.'''
 
 def load_to_db(df, sql_connection, table_name):
     ''' This function saves the final data frame to a database
